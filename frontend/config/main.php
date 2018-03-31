@@ -18,7 +18,7 @@ return [
     ],
     'components' => [
 
-          'mailer' => [
+          'mail' => [
                 'class'            => 'gulltour\phpmailer\Mailer',
                 'viewPath'         => '@common/mail',
                 'useFileTransport' => false,
@@ -32,6 +32,11 @@ return [
                     'password'   => 'mYsmTpPassword',
                 ],
             ],
+        'common' => [
+            'class' => 'frontend\components\Common',
+        ],
+
+
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
