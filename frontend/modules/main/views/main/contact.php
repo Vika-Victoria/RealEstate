@@ -1,18 +1,32 @@
 <div class="row contact">
     <div class="col-lg-6 col-sm-6 ">
 
+        <?
+        $form = \yii\bootstrap\ActiveForm::begin();
+        ?>
 
-        <input type="text" class="form-control" placeholder="Full Name">
-        <input type="text" class="form-control" placeholder="Email Address">
-        <input type="text" class="form-control" placeholder="Contact Number">
-        <textarea rows="6" class="form-control" placeholder="Message"></textarea>
-        <button type="submit" class="btn btn-success" name="Submit">Send Message</button>
+        <?= $form->field($model, 'name',['enableLabel' => false])->textInput(['placeholder' => 'Full Name', 'class' => 'form-control']) ?>
+        <?= $form->field($model, 'email',['enableLabel' => false])->textInput(['placeholder' => 'Email Address', 'class' => 'form-control']) ?>
+        <?= $form->field($model, 'subject',['enableLabel' => false])->textInput(['placeholder' => 'Contact Number', 'class' => 'form-control']) ?>
+        <?= $form->field($model, 'body',[
+            'inputOptions'=>[
+                'placeholder'=>'Message',
+                'class'=>'form-control',
+            ]
+        ])->textArea(['rows' => 6])->label(false); ?>
 
 
+        <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::classname(), [
+            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+            'captchaAction' => \yii\helpers\Url::to(['main/captcha'])
+        ]) ?>
 
+
+        <?=\yii\helpers\Html::submitButton('Send Message',['class' => 'btn btn-success']) ?>
+        <?
+        \yii\bootstrap\ActiveForm::end();
+        ?>
 
     </div>
-    <div class="col-lg-6 col-sm-6 ">
-        <div class="well"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="../../../maps.google.com/fi000001.002642&t=m&z=14&output=embed" ></iframe></div>
-    </div>
+
 </div>

@@ -49,8 +49,8 @@ table{background-color: #fff;}
 .navbar-inverse .navbar-nav > li > a{font-size: 11px;padding-top: 10px;padding-bottom: 10px;font-family: din;text-transform: uppercase;}
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{background-color: #72b70f;}
 
-.banner-search{background:url(../images/bginside.jpg)/*tpa=http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/images/bginside.jpg*/ #111;color: #fff;padding: 20px 0 10px 0; font-size: 16px;}
-.banner-search h3{color: #fff;}
+.banner-search1{display:inline-block!important;background:url(../images/bginside.jpg)/*tpa=http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/images/bginside.jpg*/ #111;color: #fff;padding: 20px 0 10px 0; font-size: 16px;width: 100%;}
+.banner-search1 h3{color: #fff;}
 
 
 .properties-listing .viewall{margin-top: 15px;}

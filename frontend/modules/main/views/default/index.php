@@ -79,42 +79,62 @@
     </div><!-- /slider-wrapper -->
 </div>
 
-<div class="banner-search">
+<div class="banner-search1">
     <div class="container">
         <!-- banner -->
         <h3>Buy, Sale &amp; Rent</h3>
         <div class="searchbar">
             <div class="row">
+
+                <?php
+                use yii\helpers\Html;
+                echo Html::beginForm();
+                ?>
                 <div class="col-lg-6 col-sm-6">
-                    <input type="text" class="form-control" placeholder="Search of Properties">
+<!--                    <input type="text" class="form-control" placeholder="Search of Properties">-->
+                    <?php echo Html::textInput('search', '', ['class' => 'form-control', 'placeholder' => 'Search of Properties'])?>
                     <div class="row">
                         <div class="col-lg-3 col-sm-3 ">
-                            <select class="form-control">
-                                <option>Buy</option>
-                                <option>Rent</option>
-                                <option>Sale</option>
-                            </select>
+<!--                            <select class="form-control">-->
+<!--                                <option>Buy</option>-->
+<!--                                <option>Rent</option>-->
+<!--                                <option>Sale</option>-->
+<!--                            </select>-->
+                            <?php echo Html::dropDownList('buy', 'null', [
+//                                    'Buy' => 'Buy',
+                                    'Rent' => 'Rent',
+                                    'Sale' => 'Sale',
+                            ], ['class' => 'form-control', 'prompt' => 'Buy',]);
+                            ?>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-4">
+                       <?php echo Html::dropDownList('price', 'null', [
+                                    '$150,000 - $200,000' => '$150,000 - $200,000',
+                                    '$200,000 - $250,000' => '$200,000 - $250,000',
+                                    '$250,000 - $300,000' => '$250,000 - $300,000',
+                                    '$300,000 - above' => '$300,000 - above',
+                            ], ['class' => 'form-control', 'prompt' => 'Price',]);
+                            ?>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-4">
+                            <?php echo Html::dropDownList('property', 'null', [
+                                'Property' => 'Property',
+                                'Apartment' => 'Apartment',
+                                'Building' => 'Building',
+                                'Office Space' => 'Office Space',
+                            ], ['class' => 'form-control']);
+                            ?>
                         </div>
                         <div class="col-lg-3 col-sm-4">
-                            <select class="form-control">
-                                <option>Price</option>
-                                <option>$150,000 - $200,000</option>
-                                <option>$200,000 - $250,000</option>
-                                <option>$250,000 - $300,000</option>
-                                <option>$300,000 - above</option>
-                            </select>
+                            <?php echo  Html::submitButton('Find Now', ['class' => 'btn btn-success'])?>
+<!--                            <button class="btn btn-success" onclick="window.location.href='buysalerent.html'">Find Now</button>-->
                         </div>
-                        <div class="col-lg-3 col-sm-4">
-                            <select class="form-control">
-                                <option>Property</option>
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Office Space</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-sm-4">
-                            <button class="btn btn-success" onclick="window.location.href='buysalerent.html'">Find Now</button>
-                        </div>
+
+                        <?php echo Html::endForm();?>
+
+
                     </div>
 
 
