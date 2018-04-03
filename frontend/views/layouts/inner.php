@@ -22,6 +22,21 @@ use yii\bootstrap\Nav;
  $this->beginBody();
 ?>
 
+<!-- Flash -->
+<?php if(Yii::$app->session->hasFlash('success')): ?>
+<div style="font-size: 20px; text-align: center">
+    <?php
+    $success = Yii::$app->session->getFlash('success');
+    echo \yii\bootstrap\Alert::widget([
+        'options' => [
+            'class' => 'alert-success',
+        ],
+        'body' => $success,
+    ])
+    ?>
+    <?php endif; ?>
+</div>
+
 <!-- Header Starts -->
   <? echo $this->render("//common/head") ?>
 <!-- #Header Starts -->
@@ -32,18 +47,16 @@ use yii\bootstrap\Nav;
         <h2><?=$this->title ?></h2>
     </div>
 </div>
-<!-- banner -->
 
-<!-- banner -->
+
+
 <div class="container">
     <div class="spacer">
         <?=$content ?>
     </div>
 </div>
 
-
-
-        <? echo $this->render("//common/footer") ?>
+    <? echo $this->render("//common/footer") ?>
 
 <?
 $this->endBody();

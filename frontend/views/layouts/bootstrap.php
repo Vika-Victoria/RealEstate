@@ -18,6 +18,10 @@ use yii\bootstrap\Nav;
 <body>
 <?php $this->beginBody() ?>
 
+<?php if(Yii::$app->session->hasFlash('success')): ?>
+    <?=Yii::$app->session->getFlash('success'); ?>
+<?php endif; ?>
+
 <?=$this->render("//common/head") ?>
 
 

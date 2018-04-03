@@ -7,6 +7,7 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+//        'db' => require (dirname(__DIR__)."/"),
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
