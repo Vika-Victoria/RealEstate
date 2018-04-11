@@ -1,3 +1,6 @@
+<?php $this->title = 'Contacts';
+$this->params['breadcrumbs'][] = $this->title; ?>
+
 <div class="row contact">
     <div class="col-lg-6 col-sm-6 ">
 
@@ -17,8 +20,8 @@
 
 
         <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::classname(), [
+            'captchaAction' => 'main/captcha',
             'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-            'captchaAction' => \yii\helpers\Url::to(['main/captcha'])
         ]) ?>
 
 

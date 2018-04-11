@@ -28,7 +28,7 @@ class ContactForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],//, 'captchaAction' => \yii\helpers\Url::to(['main/captcha'])//site/captcha
+            ['verifyCode', 'captcha', 'captchaAction'=>'main/main/captcha'],
         ];
     }
 
