@@ -1,3 +1,9 @@
+<?php if (Yii::$app->user->isGuest)
+{
+    echo \frontend\widgets\Login::widget();
+}
+?>
+
 <div class="footer">
 
     <div class="container">
@@ -19,12 +25,7 @@
                 <h4>Newsletter</h4>
                 <p>Get notified about the latest properties in our marketplace.</p>
 
-                <?php use yii\helpers\Html;
-
-                Html::beginForm('', 'post', ['class' => 'form-inline']); ?>
-                <?php echo Html::textInput('search', '', ['class' => 'form-control', 'placeholder' => 'Enter Your email address'])?>
-                <?php echo  Html::submitButton('Notify Me!', ['class' => 'btn btn-success'])?>
-                <?php Html::endForm(); ?>
+                <?php echo \frontend\widgets\SubscribeWidget::widget();?>
             </div>
 
             <div class="col-lg-3 col-sm-3">
