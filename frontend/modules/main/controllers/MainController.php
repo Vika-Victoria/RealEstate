@@ -1,12 +1,20 @@
 <?php
 namespace app\modules\main\controllers;
 
+use common\models\Advert;
 use common\models\LoginForm;
+use frontend\components\Common;
+use frontend\filters\FilterAdvert;
 use frontend\models\ContactForm;
 use frontend\models\Image;
 use frontend\models\SignupForm;
+use yii\base\DynamicModel;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
+use dosamigos\google\maps\LatLng;
+use dosamigos\google\maps\Map;
+use dosamigos\google\maps\overlays\Marker;
+
 
 class MainController extends \yii\web\Controller
 {
@@ -33,6 +41,15 @@ class MainController extends \yii\web\Controller
         }
 
         return $this->render('register', ['model' => $model]);
+    }
+
+    public function behaviors(){
+        return [
+            [
+                'only' => ['view-advert'],
+                'class' => FilterAdvert::className(),
+            ]
+        ];
     }
 
     public function actionContact()
@@ -77,6 +94,64 @@ class MainController extends \yii\web\Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+   public function actionViewAdvert($id){
+//        $id = \Yii::$app->request->get('id');
+        $model = Advert::findOne($id);
+
+        $user = $model->user;
+//        $images = \frontend\components\Common::getImageAdvert($model,false);
+
+        $data = ['name', 'email', 'text'];
+        $model_feedback = new DynamicModel($data);
+        $model_feedback->addRule('name','required');
+        $model_feedback->addRule('email','required');
+        $model_feedback->addRule('text','required');
+        $model_feedback->addRule('email','email');
+
+        if(\Yii::$app->request->isPost) {
+            if ($model_feedback->load(\Yii::$app->request->post()) && $model_feedback->validate()){
+//                \Yii::$app->common->sendMail('Subject Advert',$model_feedback->text);
+                print_r('Message send!!!');
+                die();
+            }
+        }
+
+        $current_user = ['email' => '', 'username' => ''];
+
+        if(!\Yii::$app->user->isGuest){
+
+            $current_user['email'] = \Yii::$app->user->identity->email;
+            $current_user['username'] = \Yii::$app->user->identity->username;
+        }
+
+
+        $coords = str_replace(['(',')'], '', $model->location);
+        $coords = explode(',', $coords);
+//        print_r($coords);
+//        die();
+
+       $coord = new LatLng(['lat' => $coords[0], 'lng' => $coords[1]]);
+       $map = new Map([
+           'center' => $coord,
+           'zoom' => 20,
+       ]);
+       $marker = new Marker([
+           'position' => $coord,
+           'title' => Common::getTitleAdvert($model),
+       ]);
+
+       $map->addOverlay($marker);
+
+        return $this->render('view_advert', [
+            'model' => $model,
+            'user' => $user,
+//            'images' => $images,
+            'model_feedback' => $model_feedback,
+            'current_user' => $current_user,
+            'map' => $map,
+        ]);
     }
 
 

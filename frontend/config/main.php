@@ -22,6 +22,18 @@ return [
     ],
     'components' => [
 
+        'assetManager' => [
+            'bundles' => [
+                'dosamigos\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'AIzaSyDbx8oMNrbvztpUaWmAhGhs8HjNSaUZD9c',
+//                        'language' => 'id',
+//                        'version' => '3.1.18'
+                    ]
+                ]
+            ]
+        ],
+
           'mail' => [
                 'class'            => 'gulltour\phpmailer\Mailer',
                 'viewPath'         => '@common/mail',
