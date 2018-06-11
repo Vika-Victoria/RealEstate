@@ -23,6 +23,7 @@
                 <?php
 
                 use yii\bootstrap\Nav;
+                use yii\helpers\Url;
 
                 $actionId = $this->context->action->id;
                 $menuItems =[
@@ -49,7 +50,7 @@
     <!-- Header Starts -->
 
         <div class="header">
-            <a href="index.html" ><img src="\frontend\web\images/logo.png"  alt="Realestate"></a>
+            <a href="<?=Url::to('/frontend/web/')?>" ><img src="\frontend\web\images/logo.png"  alt="Realestate"></a>
             <?
             $menuItems = [];
             $guest = Yii::$app->user->isGuest;

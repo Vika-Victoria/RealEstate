@@ -18,7 +18,15 @@ $this->params['breadcrumbs'][] = $this->title; ?>
                         <ol class="carousel-indicators hidden-xs">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 
-                            <?php foreach(range(1,count($images) - 1) as $s): ?>
+                            <?php
+
+                            $image_srcs = \frontend\components\Common::getImageAdvert(['ID' => $model->ID], false);
+                            array_shift($image_srcs);
+                            $images = array_map(function ($src) {
+                                return '<div class="item"><img src="' . $src . '"  class="properties" alt="properties" /></div>';
+                            }, $image_srcs);
+
+                            foreach(range(1,count($images)) as $s): ?>
                                 <li data-target="#myCarousel" data-slide-to="<?=$s ?>" class=""></li>
                             <?php endforeach; ?>
 
@@ -28,11 +36,9 @@ $this->params['breadcrumbs'][] = $this->title; ?>
                             <div class="item active">
                                 <img src="<?=\frontend\components\Common::getImageAdvert($model)[0] ?>"  class="properties" alt="properties" />
                             </div>
-<!--                            --><?php //foreach($images as $image): ?>
-                                <div class="item">
-<!--                                    <img src="--><?//=$image ?><!--"  class="properties" alt="properties" />-->
-                                </div>
-<!--                            --><?php //endforeach ?>
+                            <?php
+                            echo implode('', $images);
+                            ?>
                         </div>
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>

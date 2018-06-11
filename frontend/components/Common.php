@@ -9,12 +9,12 @@ class Common extends Component{
 
     const EVENT_NOTIFY = 'notify_admin';
 
-    public function sendMail($email,$subject,$body,$name=''){
+    public function sendMail($email='vik1126111@yandex.ru',$subject,$text,$name='Advert'){
         if(\Yii::$app->mail->compose()
             ->setFrom(['vik1126111@gmail.com' =>'Advert'])
             ->setTo([$email => $name])
             ->setSubject($subject)
-            ->setTextBody($body)
+            ->setHtmlBody($text)
             ->send());
 
         $this->trigger(self::EVENT_NOTIFY);
@@ -40,7 +40,7 @@ class Common extends Component{
             $image[] = $base.'/uploads/adverts/'.$data['ID'].'/general/'.$data['general_image'];
         }
         else{
-            $path = \Yii::getAlias("@frontend/web/uploads/adverts" . $data['id']);
+            $path = \Yii::getAlias("@frontend/web/uploads/adverts/" . $data['ID']);
             $files = BaseFileHelper::findFiles($path);
 
             foreach ($files as $file){

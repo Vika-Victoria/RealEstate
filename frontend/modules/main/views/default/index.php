@@ -56,31 +56,32 @@ $this->params['breadcrumbs'][] = $this->title; ?>
             <div class="row">
 
                 <?php
-
                 use frontend\components\Common;
                 use yii\helpers\Html;
-                echo Html::beginForm();
+                use yii\helpers\Url;
+
+                echo Html::beginForm(Url::to('main/main/find/'), 'get');
                 ?>
+
                 <div class="col-lg-6 col-sm-6">
 <!--                    <input type="text" class="form-control" placeholder="Search of Properties">-->
                     <?php echo Html::textInput('search', '', ['class' => 'form-control', 'placeholder' => 'Search of Properties'])?>
                     <div class="row">
-                        <div class="col-lg-3 col-sm-3 ">
-
-                            <?php echo Html::dropDownList('buy', 'null', [
-//                                    'Buy' => 'Buy',
-                                    'Rent' => 'Rent',
-                                    'Sale' => 'Sale',
-                            ], ['class' => 'form-control', 'prompt' => 'Buy',]);
-                            ?>
-                        </div>
+<!--                        <div class="col-lg-3 col-sm-3 ">-->
+<!--                            --><?php //echo Html::dropDownList('buy', 'null', [
+////                                    'Buy' => 'Buy',
+//                                    'Rent' => 'Rent',
+//                                    'Sale' => 'Sale',
+//                            ], ['class' => 'form-control', 'prompt' => 'Buy',]);
+//                            ?>
+<!--                        </div>-->
 
                         <div class="col-lg-3 col-sm-4">
                        <?php echo Html::dropDownList('price', 'null', [
-                                    '$150,000 - $200,000' => '$150,000 - $200,000',
-                                    '$200,000 - $250,000' => '$200,000 - $250,000',
-                                    '$250,000 - $300,000' => '$250,000 - $300,000',
-                                    '$300,000 - above' => '$300,000 - above',
+                                    '150000-200000' => '$150,000 - $200,000',
+                                    '200000-250000' => '$200,000 - $250,000',
+                                    '250000-300000' => '$250,000 - $300,000',
+                                    '300000' => '$300,000 - above',
                             ], ['class' => 'form-control', 'prompt' => 'Price',]);
                             ?>
                         </div>
@@ -106,16 +107,19 @@ $this->params['breadcrumbs'][] = $this->title; ?>
 
 
                 </div>
+                <?php if (Yii::$app->user->isGuest): ?>
                 <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
                     <p>Join now and get updated with all the properties deals.</p>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>        </div>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
 
     <div class="container">
-        <div class="properties-listing spacer"> <a href="buysalerent.html"  class="pull-right viewall">View All Listing</a>
+        <div class="properties-listing spacer">
             <h2>Featured Properties</h2>
             <div id="owl-example" class="owl-carousel">
 
