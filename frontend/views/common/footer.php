@@ -13,12 +13,22 @@
         <div class="row">
             <div class="col-lg-3 col-sm-3">
                 <h4>Information</h4>
-                <ul class="row">
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="about.html" >About</a></li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="agents.html" >Agents</a></li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="blog.html" >Blog</a></li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a href="contact.html" >Contact</a></li>
-                </ul>
+                <?php
+                use yii\helpers\Url;
+                use yii\widgets\Menu;
+
+                $actionId = $this->context->action->id;
+                $menuItems =[
+                    ['label' => 'About', 'url' => ['/main/main/page', 'view' => 'about']],
+                    ['label' => 'Blogs', 'url' => '/frontend/web/main/blog/index'],
+                    ['label' => 'Agents', 'url' => '#'],
+                    ['label' => 'Contact', 'url' => ['/main/main/page', 'view' => 'contact']],
+                ];
+                echo Menu::widget([
+                    'options' => ['class' => 'row'],
+                    'items' => $menuItems,
+                ]);
+                ?>
             </div>
 
             <div class="col-lg-3 col-sm-3">

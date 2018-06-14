@@ -126,10 +126,14 @@ class MainController extends \yii\web\Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'page' =>[
+                'class' => 'yii\web\ViewAction',
+                'layout' => '/inner',
+            ]
         ];
     }
 
-   public function actionViewAdvert($id){
+    public function actionViewAdvert($id){
 //        $id = \Yii::$app->request->get('id');
         $model = Advert::findOne($id);
 

@@ -27,10 +27,11 @@
 
                 $actionId = $this->context->action->id;
                 $menuItems =[
-                    ['label' => 'Home', 'active' => $actionId === 'index', 'url' => '#'],
-                    ['label' => 'About', 'url' => '#'],
-                    ['label' => 'Blog', 'url' => '#'],
-                    ['label' => 'Contact', 'url' => '#'],
+                    ['label' => 'Home', 'active' => $actionId === 'index', 'url' => '/frontend/web/'],
+                    ['label' => 'About', 'url' => ['/main/main/page', 'view' => 'about']],
+                    ['label' => 'Blogs', 'url' => '#'],
+                    ['label' => 'Agents', 'url' => '#'],
+                    ['label' => 'Contact', 'url' => ['/main/main/page', 'view' => 'contact']],
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'nav navbar-nav navbar-right'],
@@ -58,7 +59,10 @@
                 $menuItems[] =  ['label' => 'Login', 'url' => '#', 'linkOptions' => ['data-target' => '#loginpop', 'data-toggle' => "modal"]];
             }
             else{
-                $menuItems[] =  ['label' => 'Manager adverts', 'url' => ['/cabinet/advert']];
+                $menuItems[] =  ['label' => 'Blog', 'url' => ['/cabinet/blog/index']];
+                $menuItems[] =  ['label' => 'Mngr adverts', 'url' => ['/cabinet/advert']];
+                $menuItems[] =  ['label' => 'Change pass', 'url' => ['/cabinet/default/change-password']];
+                $menuItems[] =  ['label' => 'Avatar', 'url' => ['/cabinet/default/settings']];
                 $menuItems[] = ['label' => 'Logout',  'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']];
             }
             echo Nav::widget([

@@ -147,7 +147,9 @@ $this->params['breadcrumbs'][] = $this->title; ?>
             <div class="row">
                 <div class="col-lg-6 col-sm-9 recent-view">
                     <h3>About Us</h3>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><a href="about.html" >Learn More</a></p>
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br>
+                        <a href="<?=Url::to(['/main/main/page', 'view' => 'about']);?>" >Learn More</a>
+                    </p>
 
                 </div>
                 <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
