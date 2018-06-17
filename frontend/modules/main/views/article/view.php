@@ -1,32 +1,20 @@
 <?php
-$this->title = 'Blog';
+
+$this->title =  $article->title;
 $this->params['breadcrumbs'][] = $this->title;
 
-use yii\helpers\Url;
-use yii\widgets\LinkPager;
 ?>
-
 <div class="container">
     <div class="spacer blog">
         <div class="row">
-            <div class="col-lg-8 col-sm-12 ">
+            <div class="col-lg-8">
 
-
-                <?php foreach ($articles as $article): ?>
-                <!-- blog list -->
-                <div class="row">
-                    <div class="col-lg-4 col-sm-4 "><a href="<?= Url::toRoute(['article/view', 'id' => $article->id]); ?>"  class="thumbnail"><img src="<?= $article->getImage(); ?>"  alt="blog title"></a></div>
-                    <div class="col-lg-8 col-sm-8 ">
-                        <h3><a href="<?= Url::toRoute(['article/view', 'id' => $article->id]); ?>" ><?= $article->title; ?></a></h3>
-
-                        <div class="info">Posted on: <?= $article->getDate(); ?></div>
-                        <p><?= $article->description; ?></p>
-                        <a href="<?= Url::toRoute(['article/view', 'id' => $article->id]); ?>"  class="more">Read More</a>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-                <!-- blog list -->
-
+                <!-- blog detail -->
+                <h2><?= $article->title; ?></h2>
+                <div class="info">Posted on: <?= $article->getDate(); ?></div>
+                <img src="<?= $article->getImage(); ?>"  class="thumbnail img-responsive"  alt="blog title">
+                <p><?= $article->text; ?></p>
+                <!-- blog detail -->
 
             </div>
             <div class="col-lg-4 visible-lg">
@@ -41,18 +29,18 @@ use yii\widgets\LinkPager;
                     <div class="tab-content">
                         <div class="tab-pane" id="tab1">
                             <ul class="list-unstyled">
-                             <?php foreach ($recent as $article):?>
-                                <li>
-                                    <h5><a href="blogdetail.html" ><?= $article->title; ?></a></h5>
-                                    <div class="info">Posted on: <?= $article->data; ?></div>
-                                </li>
-                             <?php endforeach;?>
+                                <?php foreach ($recent as $article):?>
+                                    <li>
+                                        <h5><a href="blogdetail.html" ><?= $article->title; ?></a></h5>
+                                        <div class="info">Posted on: <?= $article->data; ?></div>
+                                    </li>
+                                <?php endforeach;?>
 
                             </ul>
                         </div>
                         <div class="tab-pane" id="tab2">
                             <ul  class="list-unstyled">
-                               <?php foreach ($popular as $article): ?>
+                                <?php foreach ($popular as $article): ?>
                                     <li>
                                         <h5><a href="blogdetail.html" ><?= $article->title; ?></a></h5>
                                         <div class="info">Posted on: <?= $article->data; ?></div>
@@ -76,15 +64,8 @@ use yii\widgets\LinkPager;
                 </div>
                 <!-- tabs -->
 
+
             </div>
-
         </div>
-
-        <?php
-            echo LinkPager::widget([
-                'pagination' => $pagination,
-            ]);
-        ?>
-
     </div>
 </div>
