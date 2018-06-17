@@ -26,12 +26,15 @@
                 use yii\helpers\Url;
 
                 $actionId = $this->context->action->id;
+                //'active' => $actionId === 'index',
                 $menuItems =[
-                    ['label' => 'Home', 'active' => $actionId === 'index', 'url' => '/frontend/web/'],
+                    ['label' => 'Home', 'url' => ['/']],
                     ['label' => 'About', 'url' => ['/main/main/page', 'view' => 'about']],
-                    ['label' => 'Blog', 'url' => '/frontend/web/main/article/index'],
-                    ['label' => 'Agents', 'url' => '#'],
+                    ['label' => 'Blog', 'url' => ['/main/article/index']],
+                    ['label' => 'Agents', 'url' => ['/main/agents/index']],
                     ['label' => 'Contact', 'url' => ['/main/main/page', 'view' => 'contact']],
+
+
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'nav navbar-nav navbar-right'],
@@ -59,9 +62,10 @@
                 $menuItems[] =  ['label' => 'Login', 'url' => '#', 'linkOptions' => ['data-target' => '#loginpop', 'data-toggle' => "modal"]];
             }
             else{
+                $menuItems[] =  ['label' => 'Agent', 'url' => ['/cabinet/agent/index']];
                 $menuItems[] =  ['label' => 'Blog', 'url' => ['/cabinet/blog/index']];
-                $menuItems[] =  ['label' => 'Mngr adverts', 'url' => ['/cabinet/advert']];
-                $menuItems[] =  ['label' => 'Change pass', 'url' => ['/cabinet/default/change-password']];
+                $menuItems[] =  ['label' => 'Manager Adv', 'url' => ['/cabinet/advert']];
+                $menuItems[] =  ['label' => 'Password', 'url' => ['/cabinet/default/change-password']];
                 $menuItems[] =  ['label' => 'Avatar', 'url' => ['/cabinet/default/settings']];
                 $menuItems[] = ['label' => 'Logout',  'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']];
             }

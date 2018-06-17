@@ -20,8 +20,8 @@
                 $actionId = $this->context->action->id;
                 $menuItems =[
                     ['label' => 'About', 'url' => ['/main/main/page', 'view' => 'about']],
-                    ['label' => 'Blogs', 'url' => '/frontend/web/main/blog/index'],
-                    ['label' => 'Agents', 'url' => '#'],
+                    ['label' => 'Blog', 'url' => '/frontend/web/main/article/index'],
+                    ['label' => 'Agents', 'url' => '/frontend/web/main/agents/index'],
                     ['label' => 'Contact', 'url' => ['/main/main/page', 'view' => 'contact']],
                 ];
                 echo Menu::widget([
