@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title; ?>
                     <div class="col-lg-8 col-sm-8 ">
                         <h3><a href="blogdetail.html" >Creative business to takeover the market</a></h3>
 
-                  <div class="info"><?=$model->data; ?></div>
+                  <div class="info"><?=$data->data; ?></div>
 <!--                        <div class="info">Posted on: Jan 20, 2013</div>-->
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <a href="blogdetail.html"  class="more">Read More</a>

@@ -29,7 +29,7 @@
                 $menuItems =[
                     ['label' => 'Home', 'active' => $actionId === 'index', 'url' => '/frontend/web/'],
                     ['label' => 'About', 'url' => ['/main/main/page', 'view' => 'about']],
-                    ['label' => 'Blogs', 'url' => '#'],
+                    ['label' => 'Blog', 'url' => '/frontend/web/main/article/index'],
                     ['label' => 'Agents', 'url' => '#'],
                     ['label' => 'Contact', 'url' => ['/main/main/page', 'view' => 'contact']],
                 ];

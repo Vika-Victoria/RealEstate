@@ -11,7 +11,9 @@ namespace app\modules\cabinet\controllers;
 
 use common\models\Blogs;
 use common\models\BlogsSearch;
+use common\models\ImageUpload;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class BlogController extends Controller
 {
@@ -74,4 +76,23 @@ class BlogController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload();
+
+        if (\Yii::$app->request->isPost)
+        {
+            $blog = $this->findModel($id);
+            $file= UploadedFile::getInstance($model, 'image');
+
+            if ($blog->saveImage($model->uploadFile($file, $blog->image)))
+            {
+                return $this->redirect(['view', 'id' => $blog->id]);
+            }
+        }
+
+        return$this->render('image', ['model' => $model]);
+    }
+
 }
